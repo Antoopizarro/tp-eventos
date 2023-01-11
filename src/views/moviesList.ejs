@@ -10,10 +10,12 @@
 </head>
 
 <body>
-    <figure>
+    <figure onmouseenter="toggleDarkMode()">
         <img src="/img/logo-DH.png" alt="Logo Digital House">
     </figure>
-    <h1 class="moviesListTitulo"></h1>
+    <h1>LISTADO DE PELÍCULAS</h1>
+    <p>Supongo que a esto se refiere con 'movies.ejs' <br> 
+        No hay nada de tema oscuro/claro aquí, así que a hardcodear estilos</p>
     <br>
     <p>
         <a class="botonAgregar" href="/movies/add">Agregar una Pelicula</a>
@@ -21,14 +23,21 @@
 
     </p>
     <br>
+    <div class="buscar-titulo">
+        <form action="/movies/buscar" method="POST">
+            <input type="text" name="titulo" id="titulo">
+            <button class="boton-buscar" type="submit">Buscar una Pelicula</button>
+        </form>
+        
+    </div>
     <ul>
         <% for( let i = 0; i < movies.length; i++ ) { %>
         <li>
-            <a  href="/movies/detail/<%= movies[i].id %>"><%= movies[i].title %></a>
+            <a href="/movies/detail/<%= movies[i].id %>"><%= movies[i].title %></a>
         </li>
         <% } %>
 
     </ul>
-    <script src="/js/moviesList.js"></script>    
 </body>
 </html>
+<script src="/js/moviesList.js"></script>
